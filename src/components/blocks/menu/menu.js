@@ -2,6 +2,7 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 
 class MenuBlock extends React.Component {
+
     render() {
         return(
             <React.Fragment>

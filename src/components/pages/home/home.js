@@ -1,8 +1,8 @@
-import React from "react"
-import {Container, Row, Col} from "react-bootstrap"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
     componentDidMount() {
@@ -15,12 +15,12 @@ class Home extends React.Component {
         const pointOptions = {
             particleColor: "rgba(200, 200, 200, .15)",
             lineColor: "rgba(142, 142, 142, .2)",
-            particleAmount: 130,
-            defaultSpeed: .5,
-            variantSpeed: .5,
+            particleAmount: 255,
+            defaultSpeed: .2,
+            variantSpeed: .3,
             defaultRadius: 2,
             variantRadius: 2,
-            linkRadius: 100,
+            linkRadius: 70,
         };
 
         window.addEventListener('resize', function () {
@@ -42,7 +42,7 @@ class Home extends React.Component {
             for(let i = 0; i < hubs.length; i++) {
                 let distance = checkDistance(point1.x, point1.y, hubs[i].x, hubs[i].y);
                 let opacity = 1 - distance / pointOptions.linkRadius;
-
+                
                 if(opacity > 0) {
                     drawArea.lineWidth = 0.5;
                     drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
@@ -55,42 +55,48 @@ class Home extends React.Component {
             }
         };
 
-        const Particle = function (xPos, yPos) {
-            this.x = Math.random() * w;
-            this.y = Math.random() * h;
-            this.speed = pointOptions.defaultSpeed + Math.random() * pointOptions.variantSpeed;
-            this.directionAngle = Math.floor(Math.random() * 360);
-            this.color = pointOptions.particleColor;
-            this.radius = pointOptions.defaultRadius + Math.random() * pointOptions.variantRadius;
-            this.vector = {
-                x: Math.cos(this.directionAngle) * this.speed,
-                y: Math.sin(this.directionAngle) * this.speed
-            };
-            this.update = function () {
-                this.border();
-                this.x += this.vector.x;
-                this.y += this.vector.y;
-            };
-            this.border = function () {
-                if(this.x >= w || this.x <= 0) {
-                    this.vector.x *= -1;
-                }
-                if(this.y >= h || this.y <= 0) {
-                    this.vector.y *= -1;
-                }
-                if(this.x > w) this.x = w;
-                if(this.y > h) this.y = h;
-                if(this.x < 0) this.x = 0;
-                if(this.y < 0) this.y = 0;
-            };
-            this.draw = function () {
-                drawArea.beginPath();
-                drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                drawArea.closePath();
-                drawArea.fillStyle = this.color;
-                drawArea.fill();
-            };
-        };
+        class Particle {
+            constructor(xPos, yPos) {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.speed = pointOptions.defaultSpeed + Math.random() * pointOptions.variantSpeed;
+                this.directionAngle = Math.floor(Math.random() * 360);
+                this.color = pointOptions.particleColor;
+                this.radius = pointOptions.defaultRadius + Math.random() * pointOptions.variantRadius;
+                this.vector = {
+                    x: Math.cos(this.directionAngle) * this.speed,
+                    y: Math.sin(this.directionAngle) * this.speed
+                };
+                this.update = function () {
+                    this.border();
+                    this.x += this.vector.x;
+                    this.y += this.vector.y;
+                };
+                this.border = function () {
+                    if (this.x >= w || this.x <= 0) {
+                        this.vector.x *= -1;
+                    }
+                    if (this.y >= h || this.y <= 0) {
+                        this.vector.y *= -1;
+                    }
+                    if (this.x > w)
+                        this.x = w;
+                    if (this.y > h)
+                        this.y = h;
+                    if (this.x < 0)
+                        this.x = 0;
+                    if (this.y < 0)
+                        this.y = 0;
+                };
+                this.draw = function () {
+                    drawArea.beginPath();
+                    drawArea.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    drawArea.closePath();
+                    drawArea.fillStyle = this.color;
+                    drawArea.fill();
+                };
+            }
+        }
 
         function setup() {
             resizeReset();
@@ -121,15 +127,13 @@ class Home extends React.Component {
         let particles = [];
         resizeReset();
         setup();
-
-        console.log(this);
     }
 
     render() {
         return(
             <div className="home-page">
                 <div className="space-photo">
-                    <canvas id="dynamic-point"></canvas>
+                    <canvas id="dynamic-point">&nbsp;</canvas>
                     <Container fluid className="title-container">
                         <Row>
                             <Col lg={12} md={12} sm={12} xs={12}>
@@ -156,6 +160,9 @@ class Home extends React.Component {
                         </Link>
                     </div>
                 </div>
+                <Container as="div" bsPrefix="home-page-content">
+
+                </Container>
             </div>
         );
     }
