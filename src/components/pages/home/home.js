@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux';
 
 class Home extends React.Component {
     componentDidMount() {
-
         let resizeReset = function () {
             w = canvasBody.width = window.innerWidth - 20;
             h = canvasBody.height = window.innerHeight;
@@ -161,11 +161,30 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <Container as="div" bsPrefix="home-page-content">
-
+                    <Container as="div" bsPrefix="volumetric-information-container about-information-container">
+                            <Container as="div" bsPrefix="rear-plan-information-container about-rear-plan"></Container>
+                            <Container as="div" bsPrefix="text-information-container about-text">
+                                <Container as="div" bsPrefix="title-information-container about-title">
+                                    {this.props.homeComponents.about.title}
+                                </Container>
+                                <Container as="div" bsPrefix="descriptor-information-container about-descriptor">
+                                    {this.props.homeComponents.about.descriptor}
+                                </Container>
+                                <Container as="div" bsPrefix="link-information-container about-link">
+                                    <Link to={this.props.homeComponents.about.url}>Подробнее</Link>
+                                </Container>
+                            </Container>
+                        </Container>
                 </Container>
             </div>
         );
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        homeComponents: state.HomeReducer
+    }
+}
+
+export default connect(mapStateToProps)(Home);

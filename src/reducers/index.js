@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
-import LanguageReducer from "./reducers-language"
+import LanguageReducer from "./reducers-language";
+import HomeReducer from "./home-reducers";
 
 const allReducers = combineReducers({
-    LanguageReducer
+    LanguageReducer,
+    HomeReducer
 });
 
 export default allReducers;
