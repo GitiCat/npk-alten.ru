@@ -5,9 +5,11 @@ import FooterComponent from "../components/blocks/footer/footer";
 import ErrorBoundary from "./error-boundary";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
-import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown,
+        faHeadset} 
+    from "@fortawesome/free-solid-svg-icons";
 
-library.add(faAngleDown);
+library.add(faAngleDown, faHeadset);
 
 const Home = lazy(() => import('../components/pages/home/home'));
 const History = lazy(() => import('../components/pages/history/history'));

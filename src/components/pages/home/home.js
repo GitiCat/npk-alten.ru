@@ -1,4 +1,4 @@
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faHeadset } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -162,19 +162,26 @@ class Home extends React.Component {
                 </div>
                 <Container as="div" bsPrefix="home-page-content">
                     <Container as="div" bsPrefix="volumetric-information-container about-information-container">
-                            <Container as="div" bsPrefix="rear-plan-information-container about-rear-plan"></Container>
-                            <Container as="div" bsPrefix="text-information-container about-text">
-                                <Container as="div" bsPrefix="title-information-container about-title">
-                                    {this.props.homeComponents.about.title}
-                                </Container>
-                                <Container as="div" bsPrefix="descriptor-information-container about-descriptor">
-                                    {this.props.homeComponents.about.descriptor}
-                                </Container>
-                                <Container as="div" bsPrefix="link-information-container about-link">
-                                    <Link to={this.props.homeComponents.about.url}>Подробнее</Link>
-                                </Container>
+                        <Container as="div" bsPrefix="rear-plan-information-container about-rear-plan"></Container>
+                        <Container as="div" bsPrefix="text-information-container about-text">
+                            <Container as="div" bsPrefix="title-information-container about-title">
+                                {this.props.homeComponents.about.title}
+                            </Container>
+                            <Container as="div" bsPrefix="descriptor-information-container about-descriptor">
+                                {this.props.homeComponents.about.descriptor}
+                            </Container>
+                            <Container as="div" bsPrefix="link-information-container about-link">
+                                <Link to={this.props.homeComponents.about.url}>Читать далее...</Link>
                             </Container>
                         </Container>
+                    </Container>
+                    <Container as="div" bsPrefix="services-provided__container">
+                        <Container as="div" bsPrefix="services-provided__item services-provided__item--hover">
+                            <FontAwesomeIcon icon={faHeadset} className="services-provided__item--icon"/>
+                            <span></span>
+                        </Container>
+
+                    </Container>
                 </Container>
             </div>
         );

@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('scroll', function () {
     let headerElement = document.getElementById('header');
     ChangeHeaderStyleToScroll(headerElement);
+
+    ParalaxElementFlowTop(".about-rear-plan", 150, .2);
 });
 
 /**
@@ -65,4 +67,15 @@ function ChangeHeaderStyleToScroll(element) {
 
         element.classList.remove("scroll-active");
     }
+}
+
+/**
+ * Provides a method to create a parallax effect
+ * @param {Uses element name} elementName 
+ * @param {Start point flow top} startTop 
+ * @param {Speed flow for element} scale 
+ */
+function ParalaxElementFlowTop(elementName, startTop, scale) {
+    let scrolling = $(window).scrollTop();
+    $(elementName).css('top', (startTop - (scrolling * scale)) + 'px')
 }
