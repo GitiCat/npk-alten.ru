@@ -11,7 +11,7 @@ class MaterialInput extends React.Component {
     
     render() {
         return(
-            <Container as="div" bsPrefix="material-input__container d-flex">
+            <Container as="div" bsPrefix="material-input__container d-flex test">
                 <Container as="div" bsPrefix="input-element">
                     <FontAwesomeIcon icon={this.props.icon} className="input-icon"/>
                     <input id={this.props.id}
