@@ -137,6 +137,7 @@ class Home extends React.Component {
         return(
             <div className="home-page">
                 <div className="space-photo">
+                    <div id="space-photo__opacity-mask"></div>
                     <canvas id="dynamic-point">&nbsp;</canvas>
                     <Container fluid className="title-container">
                         <Row>

@@ -20,9 +20,11 @@ class Feedback extends React.Component {
                                 <h2>
                                     Обратная связь
                                 </h2>
+                            </Row>
+                            <Row>
                                 <h4>
                                     Возник вопрос? Отправьте его нам и с Вами обязательно свяжутся!
-                                </h4>
+                                </h4>  
                             </Row>
                             <Row>
                                 <Container as="div" className="feedback-form__input-fuelds">
