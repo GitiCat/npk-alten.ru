@@ -6,10 +6,13 @@ import ErrorBoundary from "./error-boundary";
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {faAngleDown,
-        faHeadset} 
-    from "@fortawesome/free-solid-svg-icons";
+        faHeadset,
+        faFileSignature,
+        faLayerGroup,
+        faVials,
+        faUserMd} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faAngleDown, faHeadset);
+library.add(faAngleDown, faHeadset, faFileSignature, faLayerGroup, faVials, faUserMd);
 
 const Home = lazy(() => import('../components/pages/home/home'));
 const History = lazy(() => import('../components/pages/history/history'));

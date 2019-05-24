@@ -6,7 +6,7 @@ document.addEventListener('scroll', function () {
     let headerElement = document.getElementById('header');
     ChangeHeaderStyleToScroll(headerElement);
 
-    ParalaxElementFlowTop(".about-rear-plan", 150, .2);
+    ParalaxElementFlowTop(".about-rear-plan", 270, .2);
 });
 
 /**
