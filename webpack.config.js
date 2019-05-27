@@ -9,6 +9,11 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "bundle.js"
     },
+    node: {
+        fs: "empty",
+        net: "empty",
+        tls: "empty",
+    },
     module: {
         rules: [
             {

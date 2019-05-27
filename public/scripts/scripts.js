@@ -2,22 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     SetCurrentData(2016);
 });
 
-document.addEventListener(['mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'], function(event){
-    let delta = parseInt(event.originalEvent.wheelDelta || -event.originalEvent.detail);
-    console.log(delta);
-});
-
 document.addEventListener('scroll', function () {
     let headerElement = document.getElementById('header');
     ChangeHeaderStyleToScroll(headerElement);
 
     ParalaxElementFlowTop(".about-rear-plan", 270, .2);
 });
-
-function OpacityMaskAtScroll() {
-    let headerMask = document.getElementById("space-photo__opacity-mask");
-    headerMask.style.cssText = "";
-}
 
 /**
  *  Assigning the current date

@@ -9,8 +9,13 @@ import ServicesBlock from "../../blocks/home/services"
 import LifeCycleBlock from "../../blocks/home/LifeCycle/lifeCycle"
 import Feedback from "../../blocks/home/Feedback/Feeaback"
 
+import * as db_connect from "../../../db/initConnection"
+
 class Home extends React.Component {
     componentDidMount() {
+
+        db_connect.getQuery("");
+
         let resizeReset = function () {
             w = canvasBody.width = window.innerWidth - 20;
             h = canvasBody.height = window.innerHeight;
@@ -137,7 +142,6 @@ class Home extends React.Component {
         return(
             <div className="home-page">
                 <div className="space-photo">
-                    <div id="space-photo__opacity-mask"></div>
                     <canvas id="dynamic-point">&nbsp;</canvas>
                     <Container fluid className="title-container">
                         <Row>
